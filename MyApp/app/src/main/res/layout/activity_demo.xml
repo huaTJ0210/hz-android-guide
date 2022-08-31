@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="20dp"
+    android:padding="30dp"
+    >
+
+    <Button
+    android:id="@+id/push_first_activity"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+        android:textAllCaps="false"
+    android:text="跳转到firstActivity"
+    android:onClick="pushToFirstActivity"
+        android:layout_marginBottom="10dp"
+    ></Button>
+    <Button
+        android:id="@+id/push_quiz_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳转到Quiz"
+        android:textAllCaps="false"
+        android:onClick="pushToQuizActivity"
+        ></Button>
+</LinearLayout>

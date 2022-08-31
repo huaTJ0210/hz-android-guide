@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+        android:id="@+id/quiz_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:text="@string/question_text"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:textColor="#000"
+        />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        >
+        <Button
+            android:id="@+id/quiz_yes_button"
+            android:text="@string/quiz_true_button"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/quiz_no_button"
+            android:text="@string/quiz_false_button"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/quiz_next_button"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textAllCaps="false"
+        android:text="@string/quiz_next_button"
+        />
+</LinearLayout>
