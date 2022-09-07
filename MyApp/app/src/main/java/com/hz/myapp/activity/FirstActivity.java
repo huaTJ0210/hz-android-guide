@@ -26,6 +26,8 @@ public class FirstActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String data = intent.getStringExtra("data");
         Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
+
+        Log.d(TAG, "onCreate: ");
     }
 
     // ---- 返回数据给上一个活动----
@@ -44,7 +46,7 @@ public class FirstActivity extends AppCompatActivity {
     // 对于back键的监听
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+//        super.onBackPressed();
         Intent intent = new Intent();
         intent.putExtra("data_return_data","hello MainActivity");
         setResult(RESULT_OK,intent);
@@ -59,31 +61,43 @@ public class FirstActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        Log.d(TAG, "onStart: ");
     }
 
     // activity准备好与用户进行交互，activity处于栈顶，并且处于运行状态
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d(TAG, "onResume: ");
     }
+
     // 系统在准备去启动或者恢复另一个activity活动的时候去调用
     @Override
     protected void onPause() {
+
         super.onPause();
+        Log.d(TAG, "onPause: ");
     }
    // 活动完全不可见
     @Override
     protected void onStop() {
+
         super.onStop();
+        Log.d(TAG, "onStop: ");
+        // 可以在此保存永久性存储的数据
     }
     // 活动销毁之前调用
     @Override
     protected void onDestroy() {
+
         super.onDestroy();
+        Log.d(TAG, "onDestroy: ");
     }
     // 这个活动由停止状态变为运行状态之前调用
     @Override
     protected void onRestart() {
+
         super.onRestart();
+        Log.d(TAG, "onRestart: ");
     }
 }

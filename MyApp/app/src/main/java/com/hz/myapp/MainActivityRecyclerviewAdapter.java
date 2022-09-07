@@ -13,19 +13,15 @@ import java.util.ArrayList;
 public class MainActivityRecyclerviewAdapter extends RecyclerView.Adapter<MainActivityRecyclerviewAdapter.ViewHolder> {
 
     private ArrayList<String> dataSource;
-    private Context context;
-    public MainActivityRecyclerviewAdapter(ArrayList<String>  list, Context context){
+    private OnItemClickListener myClickListener;
+
+    public MainActivityRecyclerviewAdapter(ArrayList<String>  list){
         dataSource = list;
-        this.context = context;
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView textView;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            textView = (TextView)itemView.findViewById(R.id.main_text_view);
-        }
+    public void setOnItemClickListener(OnItemClickListener myClickListener){
+        this.myClickListener = myClickListener;
     }
 
     @NonNull
@@ -33,26 +29,34 @@ public class MainActivityRecyclerviewAdapter extends RecyclerView.Adapter<MainAc
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view  = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.main_recyclerview_item_layout,viewGroup,false);
         ViewHolder viewHolder = new ViewHolder(view);
-        // 增加点击事件
-        final Context context = this.context;
-        final int  index = i;
-        viewHolder.textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)context).openActivity(index);
-            }
-        });
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        String text = dataSource.get(i);
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+        String text = dataSource.get(position);
         viewHolder.textView.setText(text);
+        final  int index = position;
+        viewHolder.textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 myClickListener.onClick(index);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return dataSource.size();
+    }
+
+
+    class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView textView;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            textView = itemView.findViewById(R.id.main_text_view);
+        }
+
     }
 }

@@ -7,8 +7,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.hz.myapp.activity.DemoActivity;
+import com.hz.myapp.criminal.intent.CrimeActivity;
+import com.hz.myapp.criminal.intent.CrimeListActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -20,10 +23,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initData();
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycle_view);
+        RecyclerView recyclerView = findViewById(R.id.recycle_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        MainActivityRecyclerviewAdapter adapter = new MainActivityRecyclerviewAdapter(activities,this);
+        MainActivityRecyclerviewAdapter adapter = new MainActivityRecyclerviewAdapter(activities);
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onClick(int position) {
+                openActivity(position);
+            }
+        });
         recyclerView.setAdapter(adapter);
     }
 
@@ -34,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
             case "DemoActivity" :
                 intent = new Intent(MainActivity.this, DemoActivity.class);
                 break;
+            case "CrimeActivity":
+                intent = new Intent(MainActivity.this, CrimeActivity.class);
+                break;
+            case "CrimeListActivity":
+                intent = new Intent(MainActivity.this, CrimeListActivity.class);
+                break;
             default:
                 break;
         }
@@ -41,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initData(){
-        activities.add("DemoActivity");
+        String[] list = {"DemoActivity","CrimeActivity","CrimeListActivity"};
+        activities.addAll(Arrays.asList(list));
     }
 }

@@ -1,6 +1,7 @@
 package com.hz.myapp.activity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,10 @@ public class DemoActivity extends AppCompatActivity {
             String tempData = savedInstanceState.getString("data_key");
             Log.d(TAG, "onCreate: ");
         }
+
+        // 当前设备运行API级别
+        int level = Build.VERSION.SDK_INT;
+        Log.d(TAG, "onCreate: "+level);
 
 
 
