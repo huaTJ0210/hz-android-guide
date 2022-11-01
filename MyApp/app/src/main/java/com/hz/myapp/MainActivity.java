@@ -1,11 +1,13 @@
 package com.hz.myapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
+import com.hz.myapp.activity.AlertActivity;
 import com.hz.myapp.activity.DemoActivity;
 import com.hz.myapp.criminal.intent.CrimeActivity;
 import com.hz.myapp.criminal.intent.CrimeListActivity;
@@ -17,6 +19,7 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
     private static final ArrayList<String > activities = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
             case "CrimeListActivity":
                 intent = new Intent(MainActivity.this, CrimeListActivity.class);
                 break;
+            case "AlertActivity":
+                intent = new Intent(MainActivity.this, AlertActivity.class);
+                break;
             default:
                 break;
         }
@@ -56,7 +62,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initData(){
-        String[] list = {"DemoActivity","CrimeActivity","CrimeListActivity"};
+        String[] list = {"DemoActivity","CrimeActivity","CrimeListActivity","AlertActivity"};
         activities.addAll(Arrays.asList(list));
     }
+
+
 }
